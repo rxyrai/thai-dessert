@@ -11,8 +11,8 @@
 	}
 
   //call
-  $querymenu = "SELECT * FROM menu";
-  $resultmenu = mysqli_query($connect, $querymenu);
+//   $querymenu = "SELECT * FROM menu";
+//   $resultmenu = mysqli_query($connect, $querymenu);
 
   //delete
   if (isset($_GET['del'])) {
@@ -21,9 +21,15 @@
     $querydel = "DELETE FROM menu WHERE id = $id";
     $resultrdel = mysqli_query($connect, $querydel) or die("try");
 
-    if ($resultdel) {
+    if (isset($resultdel)) {
       echo "<script>alert('ลบเมนูสำเร็จ'); window.location = 'signin.php'</script>";
     }
+  }
+
+  if(isset($_POST['submit'])) {
+    $search_data = $_POST['search'];
+    $querysearch = "SELECT * FROM menu WHERE name LIKE '%$search_data%' ORDER BY name ASC";
+    $resultsearch = mysqli_query($connect, $querysearch);
   }
 
 ?>
@@ -77,8 +83,8 @@
 			</div>
 			<div class="col-md-8">
 				<h5 class="text-center my-4">
-					รายการอาหาร
-        </h5>
+					รายการอาหารที่แสดง
+                </h5>
         <form action="menu_search.php" method="post">
           <div class="row">
           <div class="col-md-10">
@@ -89,6 +95,7 @@
           </div>
           </div>
         </form>
+        <?php if (mysqli_num_rows($resultsearch)) { ?>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -100,7 +107,7 @@
                             <th class="text center">เวลาที่แก้ไข</th>
                         </tr>
                     </thead>
-                    <?php while ($row = $resultmenu->fetch_assoc()) { ?>
+                    <?php while ($row = $resultsearch->fetch_assoc()) { ?>
                     <tbody>
                         <tr>
                             <!-- <td></td> -->
@@ -117,6 +124,7 @@
                     </tbody>
                     <?php } ?>
                 </table>
+                <?php } ?>
 			</div>
 			<div class="col-md-2">
 				

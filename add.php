@@ -64,9 +64,9 @@
                     <div class="card-body">
                         <form action="php/add_db.php" method="post">
                             <label for="name">ชื่ออาหาร</label>
-                            <input type="text" name="name" placeholder="เช่น ทองหยิบ" class="form-control my-2">
+                            <input type="text" name="name" placeholder="เช่น ทองหยิบ" class="form-control my-2" required>
                             <label for="price">ราคา (บาท)</label>
-                            <input type="text" name="price" placeholder="เช่น 12" class="form-control my-2">
+                            <input type="text" name="price" placeholder="เช่น 12" class="form-control my-2" required>
                             <button type="submit" class="btn btn-success mt-2 w-100" name="add"> เพิ่มเมนู </button>
                         </form>
                     </div>
