@@ -20,6 +20,7 @@
 
     $querydel = "DELETE FROM menu WHERE id = $id";
     $resultdel = mysqli_query($connect, $querydel) or die("try");
+  }
 
 	if(isset($resultdel)) {
 		echo "<script>alert('ลบเมนูสำเร็จ!!'); window.location = 'menu.php'</script>";
@@ -78,17 +79,31 @@
 				<h5 class="text-center my-4">
 					รายการอาหาร
         </h5>
-        <form action="menu_search.php" method="post">
-          <div class="row">
-          <div class="col-md-10">
-            <input type="text" name="search" placeholder="ค้นหาเมนู" class="form-control">
-          </div>
-          <div class="col-md-2">
-            <input type="submit" value="ค้นหา" name="submit" class="btn btn-info w-100">
-          </div>
-          </div>
-        </form>
-                <table class="table table-hover">
+
+          <!-- search -->
+          <form action="menu.php" method="post">
+            <div class="row">
+              <div class="col-md-9">
+                <input type="text" name="menu_search" placeholder="ค้นหาชื่อเมนูอาหาร" class="form-control" required>
+              </div>
+              <div class="col-md-3">
+                <input type="submit" value="ค้นหา" name="search" class="btn btn-dark w-100">
+              </div>
+            </div>
+          </form>
+
+
+          <!-- all -->
+          <form action="menu.php" method="post">
+            <div class="row mt-2">
+              <div class="col-md">
+                <input type="submit" value="ค้นหาทั้งหมด" name="all_search" class="btn btn-light w-100">
+              </div>
+            </div>
+          </form>
+
+        
+                <table class="table table-hover my-3">
                     <thead>
                         <tr>
                             <!-- <th scope="col"></th> -->
@@ -99,7 +114,16 @@
                             <th class="text center">เวลาที่แก้ไข</th>
                         </tr>
                     </thead>
-                    <?php while ($row = $resultmenu->fetch_assoc()) { ?>
+
+                    <!-- search -->
+                    <?php if(isset($_POST['search'])) {
+                      $menu_name = $_POST['menu_search'];
+                      $querysearch = "SELECT * FROM menu WHERE name LIKE '%$menu_name%' ORDER BY name ASC";
+                      $resultsearch = mysqli_query($connect, $querysearch);
+
+                      if (mysqli_num_rows($resultsearch)) {
+                        while ($row = $resultsearch->fetch_assoc()) {
+                    ?>
                     <tbody>
                         <tr>
                             <!-- <td></td> -->
@@ -114,7 +138,27 @@
                             <td><?php echo $row['time']; ?></td>
                         </tr>
                     </tbody>
-                    <?php } ?>
+                    <?php } } } ?>
+
+                    <!-- all search -->
+                    <?php if(isset($_POST['all_search'])) {
+                      while ($row = $resultmenu->fetch_assoc()) {
+                    ?>
+                    <tbody>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['price']; ?></td>
+                            <td>
+                              <a href="menu-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
+                            </td>
+                            <td>
+                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
+                            </td>
+                            <td><?php echo $row['time']; ?></td>
+                        </tr>
+                    </tbody>
+                    <?php } } ?>
                 </table>
 			</div>
 			<div class="col-md-2">
