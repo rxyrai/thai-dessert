@@ -21,9 +21,9 @@
     $querydel = "DELETE FROM menu WHERE id = $id";
     $resultrdel = mysqli_query($connect, $querydel) or die("try");
 
-    if ($resultdel) {
-      echo "<script>alert('ลบเมนูสำเร็จ'); window.location = 'signin.php'</script>";
-    }
+//     if ($resultdel) {
+//       echo "<script>alert('ลบเมนูสำเร็จ'); window.location = 'signin.php'</script>";
+//     } มีปัญหาเนื่องจากคนเขียนเบลอ ลบแล้วให้ไปหน้า signin ขอบคุณค่ะ เดะแก้ตอนนี้ขอคอมเม้นท์ไว้ก่อนเพื่อไม่ให้มีปัญหา
   }
 
 ?>
