@@ -19,11 +19,10 @@
     $id = $_GET['del'];
 
     $querydel = "DELETE FROM menu WHERE id = $id";
-    $resultrdel = mysqli_query($connect, $querydel) or die("try");
+    $resultdel = mysqli_query($connect, $querydel) or die("try");
 
-	if ($resultdel) {
-       header("location : menu.php");
-     } 
+	if(isset($resultdel)) {
+		echo "<script>alert('ลบเมนูสำเร็จ!!'); window.location = 'menu.php'</script>";
   }
 
 ?>
