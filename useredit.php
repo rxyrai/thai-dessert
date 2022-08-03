@@ -4,7 +4,9 @@
 	if (!$_SESSION['username']) {
 		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'signin.php'</script>";
 	}
-
+  if ($_SESSION['username']!='admin') {
+		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'signin.php'</script>";
+	}
 	if (isset($_GET["logout"])) {
 		session_destroy();
 		echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'signin.php'</script>";
