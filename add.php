@@ -44,6 +44,11 @@
         </li>
         
       </ul>
+      <?php if($_SESSION['username'] == 'admin') { ?>
+        <form class="d-flex me-2">
+        <a href="useredit.php" class="btn btn-outline-success">แก้ไขผู้ใช้งาน</a>
+        </form>
+      <?php } ?>
       <form class="d-flex">
         <a class="btn btn-outline-danger" href="index.php?logout='0'">ออกระบบ</a>
       </form>

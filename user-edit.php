@@ -17,7 +17,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		editmenu | thai-dessert
+		edituser | thai-dessert
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -65,24 +65,24 @@
 			</div>
 			<div class="col-md-6">
             <div class="card my-3">
-                    <div class="card-header text-center"> แก้ไขเมนู </div>
+                    <div class="card-header text-center"> แก้ไขผู้ใช้งาน </div>
                     <div class="card-body">
                         <?php
                             if (isset($_GET['id'])) {
                                 $id = mysqli_real_escape_string($connect, $_GET['id']);
-                                $query = "SELECT * FROM menu WHERE id = $id";
+                                $query = "SELECT * FROM users WHERE id = $id";
                                 $result = mysqli_query($connect, $query);
 
                                 if (mysqli_num_rows($result)) {
-                                    $menu = mysqli_fetch_array($result);
+                                    $user = mysqli_fetch_array($result);
                         ?>
-                        <form action="php/edit_db.php" method="post">
-                            <input type="hidden" name="menu_id" value="<?= $menu['id']; ?>">
-                            <label for="food">ชื่ออาหาร</label>
-                            <input type="text" name="name" value="<?php echo $menu['name']?>" class="form-control my-2">
-                            <label for="price">ราคา (บาท)</label>
-                            <input type="text" name="price" value="<?php echo $menu['price']?>" class="form-control my-2">
-                            <button type="submit" class="btn btn-success mt-2 w-100" name="edit"> แก้ไขเมนู </button>
+                        <form action="php/edit_user_db.php" method="post">
+                            <input type="hidden" name="user_id" value="<?= $user['id']; ?>">
+                            <label for="food">username</label>
+                            <input type="text" name="username" value="<?php echo $user['username']?>" class="form-control my-2">
+                            <label for="price">password</label>
+                            <input type="text" name="password" value="<?php echo $user['password']?>" class="form-control my-2">
+                            <button type="submit" class="btn btn-success mt-2 w-100" name="edit"> แก้ไขข้อมูล </button>
                         </form>
                         <?php } } ?>
                     </div>

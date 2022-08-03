@@ -10,20 +10,20 @@
 		echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'signin.php'</script>";
 	}
 
-  //call
-  $querymenu = "SELECT * FROM menu";
-  $resultmenu = mysqli_query($connect, $querymenu);
+  //call user
+  $queryuser = "SELECT * FROM users";
+  $resultmenu = mysqli_query($connect, $queryuser);
 
-  //delete
+  //delete user
   if (isset($_GET['del'])) {
     $id = $_GET['del'];
 
-    $querydel = "DELETE FROM menu WHERE id = $id";
+    $querydel = "DELETE FROM users WHERE id = $id";
     $resultdel = mysqli_query($connect, $querydel) or die("try");
   }
 
 	if(isset($resultdel)) {
-		echo "<script>alert('ลบเมนูสำเร็จ!!'); window.location = 'menu.php'</script>";
+		echo "<script>alert('ลบข้อมูลสำเร็จ!!'); window.location = 'useredit.php'</script>";
   }
 
 ?>
@@ -34,7 +34,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		menu | thai-dessert
+		user | thai-dessert
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -83,13 +83,13 @@
 			<div class="col-md-8">
 				<h5 class="text-center my-4">
 					รายการอาหาร
-        </h5>
+                </h5>
 
           <!-- search -->
-          <form action="menu.php" method="post">
+          <form action="useredit.php" method="post">
             <div class="row">
               <div class="col-md-9">
-                <input type="text" name="menu_search" placeholder="ค้นหาชื่อเมนูอาหาร" class="form-control" required>
+                <input type="text" name="user_search" placeholder="ค้นหาชื่อผู้ใช้" class="form-control" required>
               </div>
               <div class="col-md-3">
                 <input type="submit" value="ค้นหา" name="search" class="btn btn-dark w-100">
@@ -99,7 +99,7 @@
 
 
           <!-- all -->
-          <form action="menu.php" method="post">
+          <form action="useredit.php" method="post">
             <div class="row mt-2">
               <div class="col-md">
                 <input type="submit" value="ค้นหาทั้งหมด" name="all_search" class="btn btn-light w-100">
@@ -112,8 +112,8 @@
                     <thead>
                         <tr>
                             <!-- <th scope="col"></th> -->
-                            <th scope="col">ชื่อเมนู</th>
-                            <th scope="col">ราคา(บาท)</th>
+                            <th scope="col">username</th>
+                            <th scope="col">password</th>
                             <th scope="col">แก้ไข</th>
                             <th scope="col">ลบ</th>
                             <th class="text center">เวลาที่แก้ไข</th>
@@ -122,8 +122,8 @@
 
                     <!-- search -->
                     <?php if(isset($_POST['search'])) {
-                      $menu_name = $_POST['menu_search'];
-                      $querysearch = "SELECT * FROM menu WHERE name LIKE '%$menu_name%' ORDER BY name ASC";
+                      $user_search = $_POST['user_search'];
+                      $querysearch = "SELECT * FROM users WHERE username LIKE '%$user_search%' ORDER BY username ASC";
                       $resultsearch = mysqli_query($connect, $querysearch);
 
                       if (mysqli_num_rows($resultsearch)) {
@@ -132,13 +132,13 @@
                     <tbody>
                         <tr>
                             <!-- <td></td> -->
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['price']; ?></td>
+                            <td><?php echo $row['username']; ?></td>
+                            <td><?php echo $row['password']; ?></td>
                             <td>
-                              <a href="menu-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
+                              <a href="user-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
                             </td>
                             <td>
-                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
+                              <a href="useredit.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
                             </td>
                             <td><?php echo $row['time']; ?></td>
                         </tr>
@@ -152,13 +152,13 @@
                     <tbody>
                         <tr>
                             <!-- <td></td> -->
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['price']; ?></td>
+                            <td><?php echo $row['username']; ?></td>
+                            <td><?php echo $row['password']; ?></td>
                             <td>
-                              <a href="menu-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
+                              <a href="user-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
                             </td>
                             <td>
-                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
+                              <a href="useredit.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
                             </td>
                             <td><?php echo $row['time']; ?></td>
                         </tr>
