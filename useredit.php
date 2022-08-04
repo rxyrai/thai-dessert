@@ -42,47 +42,13 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">
-		<img src="img/thai-dessert.png" width="45px" height="45px">
-	</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">หน้าหลัก</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="add.php">เพิ่มเมนู</a>
-        </li>
-		<li class="nav-item">
-          <a class="nav-link" href="menu.php">เมนู</a>
-        </li>
-        
-      </ul>
-      <?php if($_SESSION['username'] == 'admin') { ?>
-        <form class="d-flex me-2">
-        <a href="useredit.php" class="btn btn-outline-success">แก้ไขผู้ใช้งาน</a>
-        </form>
-      <?php } ?>
-      <form class="d-flex">
-        <a class="btn btn-outline-danger" href="index.php?logout='0'">ออกระบบ</a>
-      </form>
-    </div>
-  </div>
-</nav>
 
-	</div>
+<?php include "php/navbar.php"; ?>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2">
-				
-			</div>
-			<div class="col-md-8">
+
+			<div class="col-md-12">
 				<h5 class="text-center my-4">
 					รายการอาหาร
                 </h5>
@@ -91,7 +57,7 @@
           <form action="useredit.php" method="post">
             <div class="row">
               <div class="col-md-9">
-                <input type="text" name="user_search" placeholder="ค้นหาชื่อผู้ใช้" class="form-control" required>
+                <input type="text" name="user_search" placeholder="ค้นหาชื่อผู้ใช้" class="form-control mb-1" required>
               </div>
               <div class="col-md-3">
                 <input type="submit" value="ค้นหา" name="search" class="btn btn-dark w-100">
@@ -157,19 +123,16 @@
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['password']; ?></td>
                             <td>
-                              <a href="user-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
+                              <a href="user-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning w-100">แก้ไข</a>
                             </td>
                             <td>
-                              <a href="useredit.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
+                              <a href="useredit.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-100"> ลบ </a>
                             </td>
                             <td><?php echo $row['time']; ?></td>
                         </tr>
                     </tbody>
                     <?php } } ?>
                 </table>
-			</div>
-			<div class="col-md-2">
-				
 			</div>
 		</div>
 	</div>

@@ -27,7 +27,7 @@
       
 	  <?php if($_SESSION['username'] == 'admin') { ?>
 	  <form class="d-flex me-2">
-		<a href="useredit.php" class="btn btn-outline-success">แก้ไขผู้ใช้งาน</a>
+		<a href="useredit.php" class="btn btn-outline-success mb-2 mb-lg-0">แก้ไขผู้ใช้งาน</a>
 	  </form>
 	  <?php } ?>
       <form class="d-flex">

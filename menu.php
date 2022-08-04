@@ -53,7 +53,7 @@
           <form action="menu.php" method="post">
             <div class="row">
               <div class="col-md-9">
-                <input type="text" name="menu_search" placeholder="ค้นหาชื่อเมนูอาหาร" class="form-control" required>
+                <input type="text" name="menu_search" placeholder="ค้นหาชื่อเมนูอาหาร" class="form-control mb-1" required>
               </div>
               <div class="col-md-3">
                 <input type="submit" value="ค้นหา" name="search" class="btn btn-dark w-100">
@@ -102,7 +102,7 @@
                               <a href="menu-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
                             </td>
                             <td>
-                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
+                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger"> ลบ </a>
                             </td>
                             <td><?php echo $row['time']; ?></td>
                         </tr>
@@ -119,10 +119,10 @@
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td>
-                              <a href="menu-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning">แก้ไข</a>
+                              <a href="menu-edit.php?id=<?php echo $row['id'];?>" class="btn btn-warning w-100">แก้ไข</a>
                             </td>
                             <td>
-                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-75"> ลบ </a>
+                              <a href="menu.php?del=<?php echo $row['id'];?>" class="btn btn-danger w-100"> ลบ </a>
                             </td>
                             <td><?php echo $row['time']; ?></td>
                         </tr>
