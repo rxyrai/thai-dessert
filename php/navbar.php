@@ -1,5 +1,10 @@
+<?php
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+?>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #607EAA;">
   <div class="container">
     <a class="navbar-brand" href="index.php">
 		<img src="img/thai-dessert.png" width="45px" height="45px">
@@ -8,31 +13,27 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">หน้าหลัก</a>
+          <a class="nav-link active text-white" aria-current="page" href="#">หน้าหลัก</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="add.php">เพิ่มเมนู</a>
+          <a class="nav-link" style="color:#FBFDE5" href="#">Menu</a>
         </li>
-		<li class="nav-item">
-          <a class="nav-link" href="menu.php">เมนู</a>
-        </li>
+        <?php if(isset($_SESSION['username'])) { ?>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">เพิ่มเมนู</a>
+          </li>
+        <?php } ?>
+    </ul>
         
-      </ul>
-      
-      <div class="navbar-text me-3">
-        <?php echo "ชื่อผู้ใช้งาน : " . $_SESSION['username']; ?>
-      </div>
-      
-	  <?php if($_SESSION['username'] == 'admin') { ?>
-	  <form class="d-flex me-2">
-		<a href="useredit.php" class="btn btn-outline-success mb-2 mb-lg-0">แก้ไขผู้ใช้งาน</a>
-	  </form>
-	  <?php } ?>
-      <form class="d-flex">
-        <a class="btn btn-outline-danger" href="index.php?logout='0'">ออกระบบ</a>
-      </form>
+  <?php if(isset($_SESSION['username'])) { ?>
+    <span class="text-muted">Toggleable via the navbar brand.</span>
+    <div class="navbar-text me-4" style="color:#FBFDE5">
+    ผู้ใช้งาน : <?php echo $_SESSION['username']; ?>
+    </div>
+    <a href="index.php?logout='0'" class="btn btn-danger">ออกจากระบบ</a>
+  <?php } ?>
     </div>
   </div>
 </nav>

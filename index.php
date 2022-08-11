@@ -1,39 +1,30 @@
-<?php
+<?php include "php/server.php"; 
 
-	include "php/server.php";
+if (isset($_GET["logout"])) {
+    session_destroy();
+    echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'index.php'</script>";
+  }
 
-
-	if (!$_SESSION['username']) {
-		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'signin.php'</script>";
-	}
-
-	if (isset($_GET["logout"])) {
-		session_destroy();
-		echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'signin.php'</script>";
-	}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>
-		index | thai-dessert
-	</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<!-- ตอนจะแทรก font ต้องทำการแทรก bootstrap ก่อนจึงจะสามารถ เปลี่ยนตัว font ได้ -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai-dessert</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<?php include "php/navbar.php" ?>
-	<div class="container">
-		<div class="row">
-	
-			<div class="col-md-12">
-				<div class="text-center my-2">
-					ยินดีต้อนรับ เข้าสู่ร้านขนมไทย
-				</div>
+<?php include "php/navbar.php"; ?>
+<div class="text-center my-4">
+	ยินดีต้อนรับ เข้าสู่ร้านขนมไทย
+</div>
+<div class="container">
+    <div class="row">
+        <div class="<?php if (isset($_SESSION['username'])) { echo 'col-md-12';}  else {echo 'col-md-8';}?>">
 				<div class="card">
 					<div class="card-body">
 						<div class="card-title"> ระบบร้านขนมไทย </div>
@@ -44,11 +35,27 @@
 				<img src="img/thai-2.png" alt="" class="card-img-bottom">
 				</div>
 			</div>
+        
+            <?php if (!isset($_SESSION['username'])) {  ?>
+            <div class="col-md-4"><div class="card">
+                <div class="card-header" style="color: white; text-align: center;">
+                    เข้าสู่ระบบ
+                </div>
+                <div class="card-body">
+                    <form action="php/signin_db.php" method="post">
+                        <p class="form-label">username</p>
+                        <input type="text" name="username" id="" placeholder="ใส่ username" required class="form-control">
+                        <p class="form-label">password</p>
+                        <input type="password" name="password" id="" placeholder="ใส่ password" required class="form-control">
+                        <input type="submit" name="submit" value="sign in" class="btn btn-success w-100 mt-2">
+                    </form>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
 
-		</div>
-	</div>
-
-	<!-- add script ได้ตัวเดียว -->
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     if (mysqli_num_rows($resultlogin)) {
         echo "<script>alert('ยินดีต้อนรับค่ะ'); window.location = '../index.php'</script>";
     } else {
-        echo "<script>alert('username or password incorrect'); window.location = '../signin.php'</script>";
+        echo "<script>alert('username or password incorrect'); window.location = '../index.php'</script>";
     }
 
 ?>

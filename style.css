@@ -13,3 +13,11 @@
 }
 @import url(fonts/thsarabunnew.css);*/
 body{ font-family: 'THSarabunNew', sans-serif; font-size: 0.95em; line-height: 1.7em; }
+
+.nav-link{
+    color: rgb(249, 245, 235);
+}
+
+.card-header {
+    background-color: rgb(96, 126, 170);
+}
