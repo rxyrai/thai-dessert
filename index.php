@@ -19,26 +19,15 @@ if (isset($_GET["logout"])) {
 </head>
 <body>
 <?php include "php/navbar.php"; ?>
-<div class="text-center my-4">
-	ยินดีต้อนรับ เข้าสู่ร้านขนมไทย
-</div>
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         <div class="<?php if (isset($_SESSION['username'])) { echo 'col-md-12';}  else {echo 'col-md-8';}?>">
-				<div class="card">
-					<div class="card-body">
-						<div class="card-title"> ระบบร้านขนมไทย </div>
-						<div class="card-text text-muted fs-7">
-							เขียนขึ้นมาเพื่อที่จะได้จำโค้ดได้ ไม่มีเจตนารมณ์ในการเขียนเลยยยยยยยยยยยยย มีหัวข้ออะไรดีๆมาแนะนำบอกกันได้นะ ทำร้านขนมจนเบื่อแล้ว
-						</div>
-					</div>
-				<img src="img/thai-2.png" alt="" class="card-img-bottom">
-				</div>
+				
 			</div>
         
             <?php if (!isset($_SESSION['username'])) {  ?>
             <div class="col-md-4"><div class="card">
-                <div class="card-header" style="color: white; text-align: center;">
+                <div class="card-header" style="text-align: center;">
                     เข้าสู่ระบบ
                 </div>
                 <div class="card-body">
