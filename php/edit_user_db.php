@@ -11,7 +11,7 @@
         $resultedit = mysqli_query($connect, $queryedit) or die("try");
 
         if ($resultedit) {
-            echo "<script>alert('แก้ไขสำเร็จ!!'); window.location = '../useredit.php'</script>";
+            echo "<script>alert('แก้ไขสำเร็จ!!'); window.location = '../user.php'</script>";
         }
     }
 

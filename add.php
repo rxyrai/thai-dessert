@@ -1,14 +1,14 @@
 <?php
 	include "php/server.php";
-  include "php/navbar.php";
+  	include "php/navbar.php";
 
 	if (!$_SESSION['username']) {
-		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'signin.php'</script>";
+		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'index.php'</script>";
 	}
 
 	if (isset($_GET["logout"])) {
 		session_destroy();
-		echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'signin.php'</script>";
+		echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'index.php'</script>";
 	}
 ?>
 
@@ -18,7 +18,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		addmenu | thai-dessert
+		thai-dessert
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
