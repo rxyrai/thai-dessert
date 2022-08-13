@@ -5,6 +5,10 @@ if (isset($_GET["logout"])) {
     echo "<script>alert('ไว้เจอกันใหม่นะคะ'); window.location = 'index.php'</script>";
   }
 
+if ($_SESSION['username'] != 'admin') {
+  echo "<script>alert('คุณไม่มีสิทธิ์เข้าถึง'); window.location = 'index.php'</script>";
+}
+
   //user
   $querycall = "SELECT * FROM users";
   $resultcall = mysqli_query($connect, $querycall);

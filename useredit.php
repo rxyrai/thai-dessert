@@ -5,8 +5,8 @@
 		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'signin.php'</script>";
 	}
 
-	if ($_SESSION['username']!='admin') {
-		echo "<script>alert('กรุณาเข้าระบบก่อนนะคะ'); window.location = 'signin.php'</script>";
+	if ($_SESSION['username'] != 'admin') {
+  		echo "<script>alert('คุณไม่มีสิทธิ์เข้าถึง'); window.location = 'index.php'</script>";
 	}
 
 	if (isset($_GET["logout"])) {
