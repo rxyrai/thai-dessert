@@ -39,6 +39,7 @@ if (isset($_GET["logout"])) {
 <div class="container mt-3">
     <div class="row">
         <div class="<?php if (isset($_SESSION['username'])) { echo 'col-md-12';}  else {echo 'col-md-8';}?>">
+          <h3 class="my-2">เมนูอาหารทั้งหมด</h3>
 
         <!-- search -->
           <form action="menu.php" method="post">

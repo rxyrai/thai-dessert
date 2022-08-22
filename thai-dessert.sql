@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 02, 2022 at 05:05 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Host: localhost
+-- Generation Time: Aug 22, 2022 at 11:32 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `thai-dessert`
 --
+CREATE DATABASE IF NOT EXISTS `thai-dessert` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `thai-dessert`;
 
 -- --------------------------------------------------------
 
@@ -39,11 +41,10 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `name`, `price`, `time`) VALUES
-(1, 'ทองหยอด', 10.25, '2022-07-30 15:32:11'),
-(3, 'ข้าวเหนียวมะม่วง', 35, '2022-07-30 15:40:06'),
-(4, 'ลูกชุบ', 10.25, '2022-07-30 16:22:24'),
-(5, 'ขนมอินทนิล', 30, '2022-07-30 16:23:39'),
-(6, 'ขนมถ้วย', 20, '2022-08-02 02:58:30');
+(1, 'ทองหยอด', 20, '2022-08-13 12:28:00'),
+(3, 'ข้าวเหนียวมะม่วง', 35, '2022-07-30 08:40:06'),
+(4, 'ลูกชุบ', 10.25, '2022-07-30 09:22:24'),
+(9, 'ข้าวเหนียวทุเรียน', 45, '2022-08-13 12:40:55');
 
 -- --------------------------------------------------------
 
@@ -63,9 +64,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `time`) VALUES
-(1, 'mania', 'mania', '2022-07-28 13:03:04'),
-(2, 'rosalie', 'rose', '2022-07-29 04:09:02'),
-(3, 'julia', 'julix', '2022-07-30 16:28:10');
+(1, 'mania', 'mania', '2022-07-28 06:03:04'),
+(2, 'rosalie', 'rose', '2022-07-28 21:09:02'),
+(3, 'julia', 'julix', '2022-07-30 09:28:10'),
+(4, 'admin', 'admin', '2022-08-03 02:41:46');
 
 --
 -- Indexes for dumped tables
@@ -91,13 +93,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
